@@ -12,13 +12,22 @@ class DonutOrdersIndexContainer extends Component {
   render() {
     return (
       <div className='row donut-list'>
-        <DonutOrdersList
-          donutOrderList={[]}
-        />
+        {<DonutOrdersList
+          donutOrderList={this.props.donutOrderList}
+        />}
         <NewDonutOrderFormContainer />
       </div>
     )
   }
 };
 
-export default DonutOrdersIndexContainer;
+const mapStateToProps = (state) => {
+  return {
+    donutOrderList: state.donuts.donutOrderList
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(DonutOrdersIndexContainer)
